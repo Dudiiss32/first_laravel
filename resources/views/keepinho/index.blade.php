@@ -14,9 +14,12 @@
 </form>
 
 <hr>
-
-@foreach ($notas as $nota)
-    <div style="border: 2px dashed rgb(236, 139, 156); padding: 5px; width: 200px; height: 200px; margin: 5px;">
-        {{$nota->texto}}
-    </div>
-@endforeach
+<div class="body" style="display: flex; flex-direction: row; flex-wrap: wrap;">
+    @foreach ($notas as $nota)
+        <div style="border: 2px dashed rgb(236, 139, 156); padding: 5px; width: 200px; height: 200px; margin: 5px;">
+            {{$nota->texto}}
+            <br>
+            <a href="{{route('keep.editar', $nota->id)}}">Editar</a>
+        </div>
+    @endforeach
+</div>

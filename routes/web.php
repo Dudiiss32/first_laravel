@@ -38,4 +38,7 @@ Route::prefix('/keep')->group(function () {
     Route::get('/', [KeepinhoController::class,'index'])->name('keep');
 
     Route::post('/gravar', [KeepinhoController::class,'gravar'])->name('keep.gravar'); // a url fica: /keep/gravar
+    Route::get('/editar/{nota}', [KeepinhoController::class,'editar'])->name('keep.editar'); //Formulário de mostrar a nota para editar
+    Route::put('/editar', [KeepinhoController::class, 'editar'])->name('keep.editarGravar'); //Ação/ efetivamente editar a nota
+    Route::delete('/apagar/{nota}', [KeepinhoController::class,'apagar'])->name('keep.apagar');
 });
