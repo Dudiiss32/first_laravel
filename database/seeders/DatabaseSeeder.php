@@ -19,5 +19,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Chama o nota seeder quando rodar esse
+        $this->call([
+            NotaSeeder::class,
+        ]);
     }
 }

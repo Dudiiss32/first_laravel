@@ -8,6 +8,6 @@ class Nota extends Model
 {
     // Listagem de campos para inserção no campo
     protected $fillable = [
-        "texto","","","","","","",
+        "titulo","texto",
     ];
 }
