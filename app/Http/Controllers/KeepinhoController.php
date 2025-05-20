@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NotaRequest;
 use App\Models\Nota;
 use Illuminate\Http\Request;
 
@@ -14,23 +15,25 @@ class KeepinhoController extends Controller
             "notas"=> $notas
         ]);
     }
-    public function gravar(Request $request){
+    public function gravar(NotaRequest $request){
         // Fazendo uma validação dos campos
-        $dados = $request->validate([
-            "titulo"=> "required",
-            "texto"=> "required",
-        ]);
+
+        $dados = $request->validated();
+
+        // $dados = $request->validate([
+        //     "titulo"=> "required|min:3|max:255", // |min:3 pelo menos 3 caracteres
+        //     "texto"=> "required",
+        // ]);
 
         // Cria uma nota com todos os valores enviados pelo form. Porém, a model vai fica apenas com aqueles listados no $fillable
         Nota::create($dados);
         return redirect()->route('keep');
     }
     // o Nota $nota busca diretamente do banco o id da model Nota -> tipagem da $nota
-    public function editar(Nota $nota, Request $request){
+    public function editar(Nota $nota, NotaRequest $request){
         if($request->isMethod('put')){
             $nota = Nota::find($request->id);
-            $nota->titulo = $request->titulo;
-            $nota->texto = $request->texto;
+            $nota->fill($request->all());
             $nota->save();
             return redirect()->route('keep');
         }

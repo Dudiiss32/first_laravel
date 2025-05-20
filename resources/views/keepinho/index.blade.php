@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ asset('css/style.css')}}">
 <h1>💡Keepinho</h1>
 <p>Seja bem-vindo ao Keepinho, o seu assistente pessoal (melhor do que o Google).</p>
 
@@ -8,15 +9,21 @@
 @if ($errors->any()) 
     <div style="color: red">
         <h3>Erro!</h3>
+
+        <ul>
+            @foreach ($errors->all() as $err)
+                <li>{{$err}}</li>
+            @endforeach
+        </ul>
     </div>
 @endif
 <form action="{{route('keep.gravar')}}" method="POST">
     @csrf
 
     <label for="">Título:</label>
-    <input type="text" name="titulo" id="">
+    <input type="text" name="titulo" id="" value="{{old('titulo')}}">
     <br>
-    <textarea name="texto" id="" cols="30" rows="5"></textarea>
+    <textarea name="texto" id="" cols="30" rows="5">{{old('texto')}}</textarea>
     <br>
     <br>
     <input type="submit" value="Gravar nota">
