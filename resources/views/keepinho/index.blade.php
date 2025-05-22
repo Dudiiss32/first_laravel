@@ -4,6 +4,10 @@
 
 <hr>
 
+<a href="{{route('keep.lixeira')}}">🗑️ Lixeira</a>
+
+<hr>
+
 <h2>Gravar uma nova nota</h2>
 {{-- Se tiver qualquer erro ele mostra a seguinte mensagem: --}}
 @if ($errors->any()) 

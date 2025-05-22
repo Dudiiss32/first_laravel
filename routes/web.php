@@ -4,17 +4,17 @@ use App\Http\Controllers\CalculosController;
 use App\Http\Controllers\KeepinhoController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return redirect()->route('keep');
+});
 
 // Route::get('/teste', function(){
 //     return view('teste');
 // });
 
-Route::get('/teste/{valor}', function($valor){
-    return "Você digitou: {$valor}";
-});
+// Route::get('/teste/{valor}', function($valor){
+//     return "Você digitou: {$valor}";
+// });
 
 // Desenvolver uma rota chamada "soma", que receba dois valores e apresente a soma desses dois
 
@@ -41,4 +41,6 @@ Route::prefix('/keep')->group(function () {
     Route::get('/editar/{nota}', [KeepinhoController::class,'editar'])->name('keep.editar'); //Formulário de mostrar a nota para editar
     Route::put('/editar', [KeepinhoController::class, 'editar'])->name('keep.editarGravar'); //Ação/ efetivamente editar a nota
     Route::delete('/apagar/{nota}', [KeepinhoController::class,'apagar'])->name('keep.apagar');
+    Route::get('/lixeira', [KeepinhoController::class,'lixeira'])->name('keep.lixeira');
+    Route::get('/restaurar{nota}', [KeepinhoController::class,'restaurar'])->name('keep.restaurar');
 });
