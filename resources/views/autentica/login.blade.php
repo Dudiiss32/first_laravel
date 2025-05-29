@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ asset('css/style.css')}}">
 <h1>Login</h1>
 <hr>
 @if ($errors->any()) 
