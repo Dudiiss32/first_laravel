@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ asset('css/produtos.css') }}">
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -13,6 +15,23 @@
                     <x-link-button href="{{route('produtos.create')}}">
                         + Produto
                     </x-link-button>
+
+                    <h1>Seus Produtos</h1>
+                    <div class="produtos" >
+                        @foreach ($produtos as $produto)
+                            <div class="produto">
+                                <ul>
+                                    <li><h2>{{$produto->nome}}</h2></li>
+                                    <li><img src="{{asset('storage/'. $produto->imagem)}}" alt="Imagem de {{$produto->nome}}" ></li>
+                                    <li>R${{$produto->preco}},00</li>
+                                    <li>Descrição: {{$produto->descricao}}</li>
+                                    <li><a href="{{route('carrinho.store', $produto->id)}}">Adicionar ao carrinho</a></li>
+                                </ul>
+                                
+                            </div>    
+                        @endforeach
+                        
+                    </div>
                 </div>
             </div>
         </div>

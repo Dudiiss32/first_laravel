@@ -11,7 +11,8 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                 
-                    <form action="{{route('produtos.store')}}" method="post">
+
+                    <form action="{{route('produtos.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div>
                             <x-input-label for="nome" value="Nome"/>
@@ -29,6 +30,8 @@
                             <x-textarea id="descricao" class="block mt-1" name="descricao" required autofocus autocomplete="descricao">{{old('descricao')}}</x-textarea>
                             <x-input-error :messages="$errors->get('descricao')" class="mt-2" />
                         </div>
+
+                        <input type="file" name="imagem" id="imagem" accept="image/*">
 
                         <x-primary-button>
                             Gravar produto

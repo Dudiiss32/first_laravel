@@ -1,0 +1,74 @@
+/* Estilo geral dos produtos */
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Card de cada produto */
+.produto {
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.produto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Lista interna */
+.produto ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Nome do produto */
+.produto h2 {
+    margin: 0 0 10px;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+/* Imagem */
+.produto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Preço */
+.produto li:nth-child(3) {
+    font-weight: bold;
+    color: #0f9d58;
+    margin: 8px 0;
+}
+
+/* Descrição */
+.produto li:nth-child(4) {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Link "Adicionar ao carrinho" */
+.produto a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.produto a:hover {
+    background-color: #1e40af;
+}

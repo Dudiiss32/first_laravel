@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\KeepinhoController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ProfileController;
@@ -33,6 +34,11 @@ Route::prefix('/keep')->group(function () {
 });
 
 Route::resource('produtos', ProdutosController::class);
+
+Route::get('/carrinho', [CarrinhoController::class, 'index'])->name('carrinho.index');
+Route::get('/carrinho/create', [CarrinhoController::class, 'store'])->name('carrinho.store');
+Route::get('/carrinho/store/{id}', [CarrinhoController::class, 'store'])->name('carrinho.store');
+Route::get('/carrinho/delete/{id}', [CarrinhoController::class, 'delete'])->name('carrinho.delete');
 
 require __DIR__.'/auth.php';
 
