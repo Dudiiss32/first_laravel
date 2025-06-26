@@ -15,14 +15,21 @@
                     @if (count($carrinho) > 0)
                         <h1>Seus Produtos do carrinho</h1>
                         <div class="produtos" style="display: flex; flex-direction: column; gap: 20px;">
+                           
                             @foreach ($carrinho as $id => $produto)
                                 <div class="produto" style="border: 1px white solid">
                                     <ul>
-                                        <li><h2>{{$produto->nome}}</h2></li>
-                                        <li><img src="{{asset('storage/'. $produto->imagem)}}" alt="Imagem de {{$produto->nome}}" ></li>
-                                        <li>{{$produto->preco}}</li>
-                                        <li>{{$produto->descricao}}</li>
-                                        <li><a href="{{route('carrinho.delete', $produto->id)}}">Remover item</a></li>
+                                        <li><h2>{{$produto['nome']}}</h2></li>
+                                        <li><img src="{{asset('storage/'. $produto['imagem'])}}" alt="Imagem de {{$produto['nome']}}" ></li>
+                                        <li>{{$produto['preco']}}</li>
+                                        <li>{{$produto['descricao']}}</li>
+                                      
+                                        <form action="{{route('carrinho.delete', $produto['id'])}}" method="get">
+                                            @method('DELETE')
+                                            @csrf
+                                            <input type="submit" value="Remover item">
+                                        </form>
+                                  
                                     </ul>
                                     
                                 </div>    
