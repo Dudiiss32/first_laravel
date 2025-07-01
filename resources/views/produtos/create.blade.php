@@ -31,6 +31,14 @@
                             <x-input-error :messages="$errors->get('descricao')" class="mt-2" />
                         </div>
 
+                        <div>
+                            <select name="categorias_id" id="">
+                                @foreach ($categorias as $cat)
+                                    <option value="{{$cat->id}}">{{$cat->nome}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <input type="file" name="imagem" id="imagem" accept="image/*">
 
                         <x-primary-button>

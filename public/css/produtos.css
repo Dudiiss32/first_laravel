@@ -51,16 +51,29 @@
     margin: 8px 0;
 }
 
-/* Descrição */
+/* Categoria */
 .produto li:nth-child(4) {
     font-size: 0.9rem;
     color: #555;
 }
 
-/* Link "Adicionar ao carrinho" */
-.produto a {
-    display: inline-block;
+/* Descrição */
+.produto li:nth-child(5) {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+/* Container dos botões */
+.produto .botoes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
     margin-top: 10px;
+}
+
+/* Botão "Adicionar ao carrinho" */
+.produto a {
     padding: 8px 16px;
     background-color: #2563eb;
     color: white;
@@ -71,4 +84,19 @@
 
 .produto a:hover {
     background-color: #1e40af;
+}
+
+/* Botão "Remover item" */
+.produto form input[type="submit"] {
+    padding: 8px 16px;
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.produto form input[type="submit"]:hover {
+    background-color: #b91c1c;
 }

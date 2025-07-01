@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-        $produtos = Produto::all();
+
+        $produtos = Produto::with('categoria')->get();
 
         return view('produtos.index', ['produtos' => $produtos]);
     }
@@ -22,7 +24,8 @@ class ProdutosController extends Controller
      */
     public function create()
     {
-        return view('produtos.create');
+        $categorias = Categoria::all();
+        return view('produtos.create', ['categorias' => $categorias]);
     }
 
     /**
@@ -35,14 +38,20 @@ class ProdutosController extends Controller
             'preco' => 'required|numeric',
             'descricao' => 'required|string',
             'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'categorias_id' => 'required|exists:categorias,id',
         ]);
+        
         if($request->hasFile('imagem')){
             $imagem = $request->file('imagem');
             $caminhoImagem = $imagem->store('produtos', 'public'); // salva em storage/app/public/produtos
             $dados['imagem'] = $caminhoImagem;
         }
 
-        Produto::create($dados);
+        $categoria = Categoria::find($dados['categorias_id']);
+        if ($categoria) {
+            $categoria->produtos()->create($dados);
+        }
+
         return redirect()->route('produtos.index');
     }
 
@@ -73,8 +82,10 @@ class ProdutosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $produto = Produto::findOrFail($id);
+        $produto->delete();
+        return redirect()->route('produtos.index');
     }
 }

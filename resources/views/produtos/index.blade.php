@@ -24,8 +24,14 @@
                                     <li><h2>{{$produto->nome}}</h2></li>
                                     <li><img src="{{asset('storage/'. $produto->imagem)}}" alt="Imagem de {{$produto->nome}}" ></li>
                                     <li>R${{$produto->preco}},00</li>
+                                    <li>Categoria: {{$produto->categoria->nome}}</li>
                                     <li>Descrição: {{$produto->descricao}}</li>
                                     <li><a href="{{route('carrinho.store', $produto->id)}}">Adicionar ao carrinho</a></li>
+                                    <form action="{{route('produtos.destroy', $produto->id)}}" method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <input type="submit" value="Remover item">
+                                    </form>
                                 </ul>
                                 
                             </div>    
