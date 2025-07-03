@@ -16,6 +16,18 @@
                         + Produto
                     </x-link-button>
 
+                    <h3>Filtrar por categoria</h3>
+                    <form action="" method="get">
+                        <select name="id_categoria" id="">
+                            @foreach ($categorias as $cat)
+                                <option value="{{$cat->id}}">{{$cat->nome}}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit">Filtrar</button>
+                    </form>
+                    
+                    <br>
+
                     <h1>Seus Produtos</h1>
                     <div class="produtos" >
                         @foreach ($produtos as $produto)

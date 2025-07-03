@@ -15,8 +15,13 @@ class ProdutosController extends Controller
     {
 
         $produtos = Produto::with('categoria')->get();
+        $categorias = Categoria::all();
 
-        return view('produtos.index', ['produtos' => $produtos]);
+        return view('produtos.index', ['produtos' => $produtos, 'categorias' => $categorias]);
+    }
+
+    public function filtrar(){
+        
     }
 
     /**
