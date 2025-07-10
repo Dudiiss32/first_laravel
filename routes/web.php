@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\KeepinhoController;
 use App\Http\Controllers\ProdutosController;
@@ -39,6 +40,11 @@ Route::get('/carrinho', [CarrinhoController::class, 'index'])->name('carrinho.in
 Route::get('/carrinho/create', [CarrinhoController::class, 'store'])->name('carrinho.store');
 Route::get('/carrinho/store/{produto}', [CarrinhoController::class, 'store'])->name('carrinho.store');
 Route::get('/carrinho/delete/{produto}', [CarrinhoController::class, 'delete'])->name('carrinho.delete');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/create', [BlogController::class, 'store'])->name('blog.store');
+Route::get('/blog/store/{produto}', [BlogController::class, 'store'])->name('blog.store');
+Route::get('/blog/delete/{produto}', [BlogController::class, 'delete'])->name('blog.delete');
 
 require __DIR__.'/auth.php';
 
